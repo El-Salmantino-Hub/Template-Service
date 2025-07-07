@@ -13,6 +13,7 @@
       "@api/*": [ "./src/api/*" ],
       "@config/*": [ "./src/config/*" ],
       "@utils/*": [ "./src/utils/*" ],
+      "@states/*": [ "./src/states/*" ],
       "@tests/*": [ "./tests/*" ],
     },
   },
