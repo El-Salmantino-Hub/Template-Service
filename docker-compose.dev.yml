@@ -1,0 +1,43 @@
+services:
+  template_service_dev: 
+    build: 
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    env_file:
+      - .env.dev
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - template_network
+    depends_on:
+      - template_service_db_dev
+    command: ["pnpm", "dev"]
+  template_service_db_dev:
+    image: postgres:latest
+    env_file:
+      - .env.dev
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - template_service_db_dev:/var/lib/postgresql/data
+    networks:
+      - template_network
+    command: postgres -p ${DB_PORT}
+
+networks:
+  template_network:
+    driver: bridge
+
+volumes:
+  template_service_db_dev:
+    driver: local

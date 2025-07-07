@@ -1,0 +1,29 @@
+name: Run Vitest
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm 
+        run: npm install -g pnpm
+
+      - name: Delete old containers and volumes
+        run: docker compose --env-file .env.test -f docker-compose.test.yml down -v
+
+      - name: Build the containers
+        run: docker compose --env-file .env.test -f docker-compose.test.yml build
+
+      - name: Run docker-compose + pnpm test
+        run: |
+          docker compose --env-file .env.test -f docker-compose.test.yml up -d
+          cd ./app
+          pnpm install
+          pnpm test
+
+      - name: Shutdown containers
+        run: docker compose --env-file .env.test -f docker-compose.test.yml down

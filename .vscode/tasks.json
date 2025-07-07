@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Execute in dev mode",
+      "type": "shell",
+      "command": "docker-compose --env-file .env.dev -f docker-compose.dev.yml up --build",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Execute in prod mode",
+      "type": "shell",
+      "command": "docker-compose --env-file .env.prod -f docker-compose.prod.yml up --build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Execute in test mode",
+     "type": "shell",
+      "command": "docker-compose --env-file .env.test -f docker-compose.test.yml up -d --build && cd ./app && pnpm test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

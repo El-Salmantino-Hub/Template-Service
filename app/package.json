@@ -1,0 +1,41 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "start": "pnpm build && node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest",
+    "test:ci": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.10",
+    "@types/pg": "^8.15.4",
+    "@types/supertest": "^6.0.3",
+    "tsc": "^2.0.4",
+    "tsc-alias": "^1.8.16",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "dotenv": "^17.0.1",
+    "drizzle-kit": "^0.31.4",
+    "drizzle-orm": "^0.44.2",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "pino": "^9.7.0",
+    "pino-pretty": "^13.0.0",
+    "supertest": "^7.1.2",
+    "zod": "^3.25.75"
+  }
+}

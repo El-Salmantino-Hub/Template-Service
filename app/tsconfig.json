@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@/*": [ "./src/*" ],
+      "@db/*": [ "./src/db/*" ],
+      "@api/*": [ "./src/api/*" ],
+      "@config/*": [ "./src/config/*" ],
+      "@utils/*": [ "./src/utils/*" ],
+      "@tests/*": [ "./tests/*" ],
+    },
+  },
+  "include": ["src/**/*", "./tests/**/*", "tests", "vitest.config.ts"],
+  "exclude": ["node_modules"]
+}
