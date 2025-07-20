@@ -15,6 +15,10 @@ jobs:
       - name: Delete old containers and volumes
         run: docker compose --env-file .env.test -f docker-compose.test.yml down -v
 
+      - name: Create .npmrc file
+        run: |
+          echo $'@el-salmantino-hub:registry=https://npm.pkg.github.com\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}\nalways_auth=true' > ./app/.npmrc
+
       - name: Build the containers
         run: docker compose --env-file .env.test -f docker-compose.test.yml build
 
