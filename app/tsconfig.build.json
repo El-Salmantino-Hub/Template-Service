@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": [ "./*" ],
+      "@db/*": [ "./db/*" ],
+      "@api/*": [ "./api/*" ],
+      "@config/*": [ "./config/*" ],
+      "@utils/*": [ "./utils/*" ],
+      "@states/*": [ "./states/*" ],
+    },
+  },
+  "include": ["src/**/*",],
+  "exclude": ["node_modules"]
+}
