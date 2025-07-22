@@ -31,6 +31,10 @@ if (!env.success) {
   throw new Error('Invalid environment variables');
 }
 
+if (env.data.NODE_ENV === 'test') {
+  env.data.PORT = 0;
+}
+
 const data = {
   ...env.data,
   CONNECTION_STRING: `postgres://${env.data.DB_USER}:${env.data.DB_PASSWORD}@${env.data.DB_HOST}:${env.data.DB_PORT}/${env.data.DB_NAME}`,
